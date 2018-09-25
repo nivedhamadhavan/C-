@@ -1,0 +1,72 @@
+#region Read me please
+
+	// Application Name: MyApp
+	// Created by DotNET Nuclear C# Compiler
+	// Date Created: 2018-09-25 11:16:52:2246
+	// Author: RIT
+
+#endregion
+
+#region Using directives
+
+	using System;
+	using System.IO;
+	using System.Drawing;
+	using System.Reflection;
+	using System.Windows.Forms;
+
+#endregion
+
+#region Assembly attributes
+
+	[assembly: AssemblyTitle("MyApp")]
+	[assembly: AssemblyProduct("MyApp")]
+	[assembly: AssemblyVersion("1.0.*")]
+	[assembly: AssemblyDescription("Created by DotNET Nuclear C# Compiler")]
+	[assembly: AssemblyCompany("DotNET Nuclear C# Compiler")]
+	[assembly: AssemblyCopyright("Copyright © 2018")]
+
+#endregion
+
+namespace MyApp
+{
+	/// <summary>
+	/// Summary description for MyForm class.
+	/// </summary>
+	class MyForm : Form
+	{
+		Label Label1;
+
+		public MyForm()
+		{
+			// Define a label, and specify its text to display, position and size
+			Label1 = new Label();
+			Label1.Text = "Welcome to MyApp!";
+			Label1.AutoSize = true;
+			Label1.Location = new Point(30,30);
+
+			// Text to be Displayed in the Caption-Title Bar
+			this.Text = "MyApp";
+			this.StartPosition = FormStartPosition.CenterScreen;
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.MaximizeBox = false;
+			this.Name = "MainForm";
+
+			// Add the label to the array of controls of the form
+			this.Controls.Add(Label1);
+		}
+
+		public static void Main()
+		{
+		if(File.Exists("test.txt"))
+            {
+                string content = File.ReadAllText("test.txt");
+                Console.WriteLine("Current content of file:");
+                Console.WriteLine(content);
+            }
+            Console.WriteLine("Please enter new content for the file:");
+            string newContent = Console.ReadLine();
+            File.WriteAllText("test.txt", newContent);
+        }
+		}
+	}
